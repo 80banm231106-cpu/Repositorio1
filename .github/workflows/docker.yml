@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Iniciar sesión en Docker
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
       - name: Construir imagen
-        run: docker build -t mi-imagen .
+        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/mi-proyecto-docker:latest .
 
       - name: Subir imagen
-        run: docker push usuario/mi-imagen
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mi-proyecto-docker:latest
