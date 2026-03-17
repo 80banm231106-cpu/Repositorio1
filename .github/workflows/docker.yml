@@ -2,7 +2,7 @@ name: Docker Workflow
 
 on:
   push:
-    branches: [ "Principal" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -12,15 +12,11 @@ jobs:
       - name: Descargar código
         uses: actions/checkout@v3
 
-      - name: Iniciar sesión en Docker
-        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+      - name: Login a Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Construir imagen
-        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/mi-proyecto:latest .
+        run: docker build -t n1et0/mi-imagen .
 
       - name: Subir imagen
-<<<<<<< HEAD
-        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mi-proyecto:latest .
-=======
-        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mi-proyecto:latest
->>>>>>> f650d97 (Corrigiendo secretos y usuario)
+        run: docker push n1et0/mi-imagen
