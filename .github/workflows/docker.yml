@@ -1,0 +1,22 @@
+name: Docker Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v3
+
+      - name: Iniciar sesión en Docker
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+
+      - name: Construir imagen
+        run: docker build -t mi-imagen .
+
+      - name: Subir imagen
+        run: docker push usuario/mi-imagen
