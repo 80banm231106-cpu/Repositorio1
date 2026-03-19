@@ -19,4 +19,8 @@ jobs:
         run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/mi-proyecto:latest .
 
       - name: Subir imagen
+<<<<<<< HEAD
         run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mi-proyecto:latest .
+=======
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mi-proyecto:latest
+>>>>>>> f650d97 (Corrigiendo secretos y usuario)
