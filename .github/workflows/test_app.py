@@ -1,7 +1,4 @@
-def multiplicacion(a,b):
-    return a*b
+from app import multiplicacion
 
-resultado = multiplicacion(7,4)
-print("--HOLA TODOS--")
-
-print("EL RESULTADO DE 7*4 ES:",resultado)
+def test_multiplicacion():
+    assert multiplicacion(7, 4) == 28

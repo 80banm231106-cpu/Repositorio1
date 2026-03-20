@@ -12,6 +12,19 @@ jobs:
       - name: Descargar código
         uses: actions/checkout@v3
 
+        #  Configurar buildx
+      - name: Configurar Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Validar build (CHECK)
+      - name: Validar configuración Docker
+        uses: docker/build-push-action@v6
+        with:
+          call: check
+      
+      - name: Ejecutar pruebas
+        run: python -m unittest discover
+
       - name: Login a Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
@@ -20,3 +33,5 @@ jobs:
 
       - name: Subir imagen
         run: docker push n1et0/mi-imagen
+
+      
