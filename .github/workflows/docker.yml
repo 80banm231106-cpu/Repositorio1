@@ -22,6 +22,10 @@ jobs:
         with:
           call: check
       
+      #  Docker Bake
+      - name: Ejecutar Docker Bake
+        uses: docker/bake-action@v4    
+
       - name: Ejecutar pruebas
         run: python -m unittest discover
 
