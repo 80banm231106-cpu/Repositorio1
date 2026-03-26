@@ -24,7 +24,7 @@ jobs:
       
       #  Docker Bake
       - name: Ejecutar Docker Bake
-        uses: docker/bake-action@v4    
+        uses: docker/bake-action@v5
 
       - name: Ejecutar pruebas
         run: python -m unittest discover
